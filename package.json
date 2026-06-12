@@ -1,0 +1,45 @@
+{
+  "name": "nexora-pos",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite",
+    "dev:api": "node --watch server/index.js",
+    "start": "node server/index.js",
+    "start:api": "node server/index.js",
+    "package:github": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-github.ps1",
+    "desktop:dev": "tauri dev --config desktop/src-tauri/tauri.conf.json",
+    "desktop:build": "tauri build --config desktop/src-tauri/tauri.conf.json",
+    "build": "vite build",
+    "lint": "eslint .",
+    "test": "node --test server/**/*.test.js",
+    "verify": "npm run lint && npm run test && npm run build && npm run verify:ui",
+    "verify:ui": "node scripts/verify-interactions.mjs",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "recharts": "^2.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@tauri-apps/cli": "^2.8.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "playwright-core": "^1.60.0",
+    "vite": "^6.0.7"
+  }
+}

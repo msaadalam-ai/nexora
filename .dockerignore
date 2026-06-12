@@ -1,0 +1,11 @@
+node_modules
+dist
+data
+.git
+.npm-cache
+*.log
+desktop/src-tauri/target
+gym-pos
+hotel-pos
+ladybug-jewelry-pos
+release

@@ -1,0 +1,36 @@
+services:
+  api:
+    build:
+      context: ..
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 8787
+      DATABASE_PATH: /app/data/nexora.db
+      TOKEN_SECRET: ${TOKEN_SECRET:?TOKEN_SECRET is required}
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:?ALLOWED_ORIGIN is required}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET:?WEBHOOK_SECRET is required}
+    ports:
+      - "8787:8787"
+    volumes:
+      - nexora-data:/app/data
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    command: ["--config.file=/etc/prometheus/prometheus.yml"]
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+
+volumes:
+  nexora-data:
+  prometheus-data:

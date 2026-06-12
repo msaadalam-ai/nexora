@@ -1,0 +1,10 @@
+{
+  "name": "Nexora POS",
+  "short_name": "Nexora POS",
+  "description": "Offline-capable multi-branch point of sale.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#151923",
+  "categories": ["business", "finance", "productivity"]
+}
